@@ -136,7 +136,7 @@ namespace Backtrace.Unity.Editor
             GUILayout.FlexibleSpace();
 
             backtraceConfiguration = (BacktraceConfiguration)EditorGUILayout
-                .ObjectField(backtraceConfiguration, typeof(BacktraceConfiguration), new GUILayoutOption[]
+                .ObjectField(backtraceConfiguration, typeof(BacktraceConfiguration), false, new GUILayoutOption[]
                 {
                     GUILayout.MinWidth(position.width / 3)
                 });
