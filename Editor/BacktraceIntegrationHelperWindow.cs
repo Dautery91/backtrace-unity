@@ -11,7 +11,7 @@ namespace Backtrace.Unity.Editor
     public class BacktraceIntegrationHelperWindow : EditorWindow
     {
         // Constant Labels and URLs
-        private const string LogoPath = "Assets/Art/Backtrace Logo/PNGs/Logo-Backtrace-TrueBlack-Horiz.png";
+        private const string LogoPath = "Packages/io.backtrace.unity/Editor/Logos/Logo-Backtrace-TrueBlack-Horiz.png";
 
         // Notifications / error messages
         private string windowLogMessage;
