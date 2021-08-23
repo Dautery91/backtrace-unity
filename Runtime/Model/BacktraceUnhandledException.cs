@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Backtrace.Unity.Model
 {
@@ -38,15 +39,18 @@ namespace Backtrace.Unity.Model
                 return _stacktrace;
             }
         }
+        public LogType Type { get; set; }
 
         /// <summary>
         /// Unhandled exception stack frames
         /// </summary>
-        public readonly List<BacktraceStackFrame> StackFrames = new List<BacktraceStackFrame>();
+        public readonly List<BacktraceStackFrame> StackFrames;
 
 
         public BacktraceUnhandledException(string message, string stacktrace) : base(message)
         {
+            Type = LogType.Exception;
+            StackFrames = new List<BacktraceStackFrame>();
             _message = message;
             _stacktrace = stacktrace;
             if (!string.IsNullOrEmpty(stacktrace))

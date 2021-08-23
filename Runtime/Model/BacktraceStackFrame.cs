@@ -3,6 +3,7 @@ using Backtrace.Unity.Types;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 
@@ -85,10 +86,10 @@ namespace Backtrace.Unity.Model
         {
             var stackFrame = new BacktraceJObject(new Dictionary<string, string>()
             {
-                ["funcName"] = FunctionName,
-                ["path"] = FileName,
-                ["metadata_token"] = MemberInfo,
-                ["assembly"] = Assembly
+                {"funcName", FunctionName},
+                {"path", FileName },
+                {"metadata_token", MemberInfo },
+                { "assembly", Assembly}
             });
 
             stackFrame.Add("address", ILOffset);
@@ -165,7 +166,7 @@ namespace Backtrace.Unity.Model
             Column = frame.GetFileColumnNumber();
             try
             {
-                MemberInfo = method.MetadataToken.ToString();
+                MemberInfo = method.MetadataToken.ToString(CultureInfo.InvariantCulture);
             }
             catch (InvalidOperationException)
             {
@@ -277,7 +278,7 @@ namespace Backtrace.Unity.Model
 
         public override string ToString()
         {
-            return string.Format("{0} (at {1}:{2})", FunctionName, Library, Line.ToString());
+            return string.Format("{0} (at {1}:{2})", FunctionName, Library, Line.ToString(CultureInfo.InvariantCulture));
         }
     }
 }
